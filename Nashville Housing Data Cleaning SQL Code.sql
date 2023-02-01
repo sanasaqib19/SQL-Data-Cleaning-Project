@@ -17,15 +17,15 @@ Select saleDateConverted, CONVERT(Date,SaleDate)
 From PortfolioProject.dbo.NashvilleHousing
 
 
-Update NashvilleHousing
+Update PortfolioProject.dbo.NashvilleHousing
 SET SaleDate = CONVERT(Date,SaleDate)
 
 -- If it doesn't Update properly
 
-ALTER TABLE NashvilleHousing
+ALTER TABLE PortfolioProject.dbo.NashvilleHousing
 Add SaleDateConverted Date;
 
-Update NashvilleHousing
+Update PortfolioProject.dbo.NashvilleHousing
 SET SaleDateConverted = CONVERT(Date,SaleDate)
 
 
@@ -76,17 +76,17 @@ SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress) -1 ) as Address
 From PortfolioProject.dbo.NashvilleHousing
 
 
-ALTER TABLE NashvilleHousing
+ALTER TABLE PortfolioProject.dbo.NashvilleHousing
 Add PropertySplitAddress Nvarchar(255);
 
-Update NashvilleHousing
+Update PortfolioProject.dbo.NashvilleHousing
 SET PropertySplitAddress = SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress) -1 )
 
 
-ALTER TABLE NashvilleHousing
+ALTER TABLE PortfolioProject.dbo.NashvilleHousing
 Add PropertySplitCity Nvarchar(255);
 
-Update NashvilleHousing
+Update PortfolioProject.dbo.NashvilleHousing
 SET PropertySplitCity = SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress) + 1 , LEN(PropertyAddress))
 
 
@@ -111,25 +111,25 @@ From PortfolioProject.dbo.NashvilleHousing
 
 
 
-ALTER TABLE NashvilleHousing
+ALTER TABLE PortfolioProject.dbo.NashvilleHousing
 Add OwnerSplitAddress Nvarchar(255);
 
-Update NashvilleHousing
+Update PortfolioProject.dbo.NashvilleHousing
 SET OwnerSplitAddress = PARSENAME(REPLACE(OwnerAddress, ',', '.') , 3)
 
 
-ALTER TABLE NashvilleHousing
+ALTER TABLE PortfolioProject.dbo.NashvilleHousing
 Add OwnerSplitCity Nvarchar(255);
 
-Update NashvilleHousing
+Update PortfolioProject.dbo.NashvilleHousing
 SET OwnerSplitCity = PARSENAME(REPLACE(OwnerAddress, ',', '.') , 2)
 
 
 
-ALTER TABLE NashvilleHousing
+ALTER TABLE PortfolioProject.dbo.NashvilleHousing
 Add OwnerSplitState Nvarchar(255);
 
-Update NashvilleHousing
+Update PortfolioProject.dbo.NashvilleHousing
 SET OwnerSplitState = PARSENAME(REPLACE(OwnerAddress, ',', '.') , 1)
 
 
@@ -162,7 +162,7 @@ Select SoldAsVacant
 From PortfolioProject.dbo.NashvilleHousing
 
 
-Update NashvilleHousing
+Update PortfolioProject.dbo.NashvilleHousing
 SET SoldAsVacant = CASE When SoldAsVacant = 'Y' THEN 'Yes'
 	   When SoldAsVacant = 'N' THEN 'No'
 	   ELSE SoldAsVacant
